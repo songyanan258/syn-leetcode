@@ -13,11 +13,11 @@
 var coinChange = function (coins, amount) {
   let dp = new Array(amount + 1).fill(Infinity)
   dp[0] = 0
-  for (let i = 0; i < dp.length; i++) {
+
+  for (let i = 1; i < dp.length; i++) {
     for (let coin of coins) {
-      if (i - coin >= 0) {
-        //取当前子结构的最优解
-        dp[i] = Math.min(dp[i], dp[i - coin] + 1)
+      if (i >= coin) {
+        dp[i] = Math.min(dp[i - coin] + 1, dp[i])
       }
     }
   }
