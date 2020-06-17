@@ -9,8 +9,9 @@
  * @param {string[]} A
  * @return {number}
  */
-var minDeletionSize = function(A) {
+var minDeletionSize = function (A) {
   //测试点东西
+
 };
 // @lc code=end
 
