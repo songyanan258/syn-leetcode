@@ -13,6 +13,7 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function (nums1, m, nums2, n) {
+  //双指针法
   let i = m - 1, j = n - 1, k = m + n - 1
   while (i >= 0 && j >= 0) {
     if (nums1[i] > nums2[j]) {
