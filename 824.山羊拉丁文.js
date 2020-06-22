@@ -10,7 +10,22 @@
  * @return {string}
  */
 var toGoatLatin = function (S) {
+  //切割字符串
+  let arr = S.split(' ')
+  let len = arr.length
+  //遍历
+  for (let i = 0; i < len; i++) {
+    console.log(arr[i])
+    //如果原音开头
+    if (arr[i].match(/^[a|e|i|o|u|A|E|I|O|U]/)) {
+    } else {
+      arr[i] = arr[i].slice(1, arr[i].length) + arr[i].slice(0, 1)
+    }
+    arr[i] = arr[i] + 'ma'
 
+    arr[i] = arr[i].padEnd(i + arr[i].length + 1, 'a')
+  }
+  return arr.join(' ')
 };
 // @lc code=end
 
