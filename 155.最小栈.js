@@ -10,6 +10,8 @@
  */
 var MinStack = function () {
   this.stack = []
+  //辅助计算最小值
+  this.stack2 = []
 };
 
 /** 
@@ -18,13 +20,19 @@ var MinStack = function () {
  */
 MinStack.prototype.push = function (x) {
   this.stack.push(x)
+  if (this.stack2.length == 0 || this.stack2[this.stack2.length - 1] >= x) {
+    this.stack2.push(x)
+  }
 };
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function () {
-  return this.stack.pop()
+  //如果出栈值和当前的最小值相等，那么辅助栈也要对栈顶元素进行出栈，确保最小值的有效性
+  if (this.stack.pop() == this.stack2[this.stack2.length - 1]) {
+    this.stack2.pop()
+  }
 };
 
 /**
@@ -41,12 +49,7 @@ MinStack.prototype.top = function () {
  * @return {number}
  */
 MinStack.prototype.getMin = function () {
-  let minValue = Infinity
-  const { stack } = this
-  for (let i = 0; i < stack.length; i++) {
-    minValue = stack[i] < minValue ? stack[i] : minValue
-  }
-  return minValue
+  return this.stack2[this.stack2.length - 1]
 };
 
 /**
