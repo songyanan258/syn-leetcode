@@ -9,9 +9,20 @@
  * @param {string[]} A
  * @return {number}
  */
-var minDeletionSize = function (A) {
-  //测试点东西
+var minDeletionSize = function (strs) {
+  let n = strs.length
+  let m = strs[0].length
+  let num = 0
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n - 1; j++) {
+      if (strs[j][i] > strs[j + 1][i]) {
+        num++
+        break
+      }
+    }
+  }
 
+  return num
 };
 // @lc code=end
 
