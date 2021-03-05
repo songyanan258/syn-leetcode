@@ -10,8 +10,8 @@
  * @param {number[][]} paths
  * @return {number[]}
  */
-var gardenNoAdj = function(N, paths) {
-    
+var gardenNoAdj = function (N, paths) {
+
 };
 // @lc code=end
 
