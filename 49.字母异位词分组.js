@@ -10,31 +10,17 @@
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
+  const map = new Map()
 
-  let judgeStr = (str1, str2) => {
-    let str1Arr = str1.split('')
-    let str2Arr = str2.split('')
-    while (str2Arr.length !== 0) {
-      if (str2Arr.some(item => item == str1Arr[0])) {
-        str1Arr.splice(1)
-      } else {
-        return false
-      }
-    }
-    return true
+  for (let str of strs) {
+    let array = Array.from(str)
+    array.sort()
+    let key = array.toString()
+    let list = map.get(key) ? map.get(key) : new Array()
+    list.push(str)
+    map.set(key, list)
   }
-
-  let newArr = []
-
-  for (let i = 0; i < strs.length; i++) {
-    if (newArr.length == 0) {
-      newArr.push([strs[i]])
-    } else {
-      for (let j = 0; j < newArr.length; j++) {
-
-      }
-    }
-  }
+  return Array.from(map.values())
 };
 // @lc code=end
 
