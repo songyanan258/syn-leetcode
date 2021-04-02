@@ -22,5 +22,6 @@ var uniquePaths = function (n, m) {
   }
   return arr[n - 1]
 };
+
 // @lc code=end
 
