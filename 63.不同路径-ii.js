@@ -26,6 +26,7 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
       }
     }
   }
+
   return arr[n - 1]
 };
 // @lc code=end
