@@ -19,7 +19,6 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
       if (i == 0 && j == 0) {
         arr[i] = 1
       }
-
       if (obstacleGrid[i][j] == 1) {
         arr[j] = 0
       } else if (j > 0) {
