@@ -14,10 +14,12 @@ var maxProfit = function (prices) {
 
   while (right < prices.length) {
     if (prices[left] < prices[right]) {
-      price += prices[right] - prices[left]
+      price = Math.max(price, prices[right] - prices[left])
+      right++
+    } else {
+      left = right
+      right++
     }
-    left++
-    right++
   }
   return price
 };
