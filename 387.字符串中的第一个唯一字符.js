@@ -11,6 +11,7 @@
  */
 var firstUniqChar = function (s) {
 
+  //第一次出现的索引和最后一次出现的索引一致的情况时就是单个字符
   for (let i = 0; i < s.length; i++) {
     if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) return i
   }
