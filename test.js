@@ -1,16 +1,24 @@
-var rob = function (nums) {
-  let len = nums.length
-  if (len <= 0) {
-    return 0
+var setZeroes = function (matrix) {
+  let copyArr = new Array(matrix.length)
+  for (let i = 0; i < copyArr.length; i++) {
+    copyArr[i] = Object.assign([], matrix[i])
   }
-  if (len == 1) {
-    return nums[0]
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (matrix[i][j] === 0) {
+        let row = 0, column = 0
+        while (row < matrix[0].length) {
+          copyArr[i][row] = 0
+          row++
+        }
+        while (column < matrix.length) {
+          copyArr[column][j] = 0
+          column++
+        }
+      }
+    }
   }
-  if (len == 2) {
-    return Math.max(nums[0], nums[1])
-  }
-  console.log('喵喵喵', nums.slice(0, len - 1), nums.slice(0, len - 2), Math.max(rob(nums.slice(0, len - 1)), rob(nums.slice(0, len - 2) + nums[len - 1])))
-  return Math.max(rob(nums.slice(0, len - 1)), rob(nums.slice(0, len - 2)) + nums[len - 1])
+  return copyArr
 };
-
-console.log(rob([1, 2, 3, 4]))
+let s = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+console.log(setZeroes(s))
