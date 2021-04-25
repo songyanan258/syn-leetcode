@@ -21,4 +21,3 @@ var setZeroes = function (matrix) {
   return copyArr
 };
 let s = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
-console.log(setZeroes(s))
