@@ -12,7 +12,7 @@
 var pancakeSort = function (arr) {
   const ind = new Array()//index数组
   const ret = []//答案数组
-  for (let i = 0; i < arr.length; i++)ind[arr[i]] = i
+  for (let i = 0; i < arr.length; i++)ind[arr[i]] = i//把元素放到下标里面，位置放到值里面，用这种方式快速找到最大值应该在哪里
   for (let i = arr.length; i >= 1; i--) {
     if (ind[i] !== 0) ret.push(ind[i] + 1)
     reverse(arr, ind[i], ind)
