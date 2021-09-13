@@ -18,16 +18,38 @@
  */
 var postorderTraversal = function (root) {
 
-  let stack = []
-  let ret = []
-  let cur = root
-  while (cur || stack.length > 0) {
-    while (cur) {
-      stack.push(cur)
-      ret.push(cur.left)
-      cur = cur.left
+  /**
+   * 利用栈来处理后续遍历
+   */
+  let s1 = []
+  let s2 = []
+  let ans = []
+  s1.push(root)
+  s2.push(0)
+  while (s1.length) {
+    let status = s2.pop()
+    switch (status) {
+      case 0: {//处理左子树
+        s2.push(1)
+        if (s1[s1.length - 1] && s1[s1.length - 1].left !== null) {
+          s1.push(s1[s1.length - 1].left)
+          s2.push(0)
+        }
+      } break;
+      case 1: {//处理右子树
+        s2.push(2)
+        if (s1[s1.length - 1] && s1[s1.length - 1].right !== null) {
+          s1.push(s1[s1.length - 1].right)
+          s2.push(0)
+        }
+      } break;
+      case 2: {//处理中间
+        let data = s1.pop()
+        data && ans.push(data.val)
+      } break;
     }
   }
+  return ans
 };
 // @lc code=end
 
