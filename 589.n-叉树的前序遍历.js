@@ -17,8 +17,20 @@
  * @param {Node|null} root
  * @return {number[]}
  */
-var preorder = function(root) {
-    
+const dfs = function (root, ans) {
+  if (!root) return
+  ans.push(root.val)
+  let children = root.children
+  for (let i = 0; i < children.length; i++) {
+    dfs(children[i], ans)
+  }
+
+  return ans
+}
+var preorder = function (root) {
+  let ans = []
+  dfs(root, ans)
+  return ans
 };
 // @lc code=end
 
