@@ -19,10 +19,10 @@ import { tomato } from "color-name";
  * @return {TreeNode}
  */
 var invertTree = function (root) {
-  if (!root) {
-    return root
-  }
-  [root.left, root.right] = [invertTree(root.right), invertTree(root.left)]
+  if (!root) return root
+  let right = invertTree(root.right) || null;
+  let lefts = invertTree(root.left) || null;
+  [root.left, root.right] = [right, lefts]
   return root
 };
 // @lc code=end
