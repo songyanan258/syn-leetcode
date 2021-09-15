@@ -17,32 +17,24 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var zigzagLevelOrder = function (root) {
+var zigzagLevelOrder = function (root, num = 0, ans = []) {
   if (!root) return []
-
-  let res = []
-  //创建标志位，是否反转
-  let flag = true
-  //创建数组存放当前层级
-  let arr = [root]
-  while (arr.length) {
-    let newArr = []
-    let target = Object.assign([], arr)
-    if (!flag) target.reverse()
-    flag = !flag
-    res.push(target.map(item => item.val))
-    //循环遍历，压入下一层级
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].left) {
-        newArr.push(arr[i].left)
-      }
-      if (arr[i].right) {
-        newArr.push(arr[i].right)
-      }
+  let data = ans[num]
+  if (!data) {
+    data = [root.val]
+  } else {
+    //根据二叉树深度来判断插入尾部还是插入头部
+    if (num % 2 == 0) {
+      data.unshift(root.val)
+    } else {
+      data.push(root.val)
     }
-    arr = newArr
-
   }
-  return res
+  ans[num] = data
+  zigzagLevelOrder(root.right, num + 1, ans)
+  zigzagLevelOrder(root.left, num + 1, ans)
+
+  return ans
+
 };
 // @lc code= end
