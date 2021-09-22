@@ -3,6 +3,7 @@
  * @param {number} k
  * @return {number[]}
  */
+//!虽然可以用sort做，但是我就是不用，我就要用堆的方法做
 var getLeastNumbers = function (arr, k) {
   if (k == 0) return []
   let ans = []
