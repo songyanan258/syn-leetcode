@@ -10,11 +10,21 @@
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-  const arr = s.split(' ')
-  const res = arr.filter(item => item.length)
-  if (!res.length) return 0
-
-  return res[res.length - 1].length
+  let stack = []
+  let num = 0
+  let len = 0
+  while (num < s.length) {
+    let char = s.slice(num, num + 1)
+    if (char !== ' ') {
+      if (s.slice(num - 1, num) !== '' && s.slice(num - 1, num) == ' ') {
+        len = 1
+      } else {
+        len += 1
+      }
+    }
+    num++
+  }
+  return len
 };
 // @lc code=end
 
