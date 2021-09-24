@@ -39,7 +39,7 @@ var kSmallestPairs = function (nums1, nums2, k) {
   }
   return ans
 };
-
+//!一定要想好是用大顶堆还是用小顶堆！！！！！！
 const push = function (val) {
   heap.push(val)
   let len = heap.length - 1
@@ -56,7 +56,6 @@ const top = function () {
 const size = function () {
   return heap.length
 }
-
 const pop = function () {
   if (heap.length == 0) return
   let len = heap.length - 1;
